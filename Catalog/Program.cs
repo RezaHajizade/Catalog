@@ -1,3 +1,4 @@
+using Catalog.Apis;
 using Catalog.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,7 +21,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-
+app.MapGroup("/api/v1/brands")
+   .WithTags("Brand APIs")
+   .MapCatalogBrandApis();
 
 
 app.Run();
